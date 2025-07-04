@@ -25,12 +25,13 @@
 
       <script>
         function generatePassword() {
+            let = passwordLenght = 16
             const chars =
             "abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
 
             let password = ""
 
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < passwordLength; i++) {
                 const randomNumber = Math.floor(Math.random() * chars.length)
                 password += chars.substring(randomNumber, randomNumber + 1)
             }
@@ -40,6 +41,12 @@
             
             console.log(password)
         }
+
+        const passwordLenghtEl = document.querySelector("#password-length")
+        passwordLengthEl.addeventLiestener("input", function(){
+            passwordLength = passwordLenghtEl.value
+            generatePassword()
+        })
 
         generatePassword()
 
