@@ -39,12 +39,13 @@
             const inputEl = document.querySelector("#password")
             inputEl.value = password
             
-            const passwordLengthEl = document.querySelector("#password-lenght")
+        }
+
+        const passwordLengthEl = document.querySelector("#password-lenght")
             passwordLengthEl.addEventListener("input", function(){
                 passwordLength = passwordLengthEl.value
                 generatePassword()
             })
-        }
 
 
         generatePassword()
