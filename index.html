@@ -31,22 +31,38 @@
     </main>
         
       <script>
-        function generatePassword() {
-            const chars =
-            "abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
+        
+            const inputEl = document.querySelector("#password")
+
+            let passwordLength = 16
+            
+            function generatePassword(){
+                const chars =
+                "abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
 
                 let password = ""
 
-            for (let i = 0; i < 8; i++) {
-                const randomNumber = Math.floor(Math.random() * chars.length)
-                password += chars.substring(randomNumber, randomNumber + 1)
+                for (let i = 0; i < passwordLength; i++) {
+                    const randomNumber = Math.floor(Math.random() * chars.length)
+                    password += chars.substring(randomNumber, randomNumber + 1)
+                }
+            
+                inputEl.value = password
+        
             }
 
-            const inputEl = document.querySelector("#password")
-            inputEl.value = password
-            
-            console.log(password)
+        function copy() {
+            navigator.clipboard.writeText(inputEl.value)
         }
+
+        const passwordLengthEl = document.querySelector("#password-length")
+        passwordLengthEl.addEventListener("input", function(){
+            passwordLength = passwordLengthEl.value
+            generatePassword()
+        })
+
+        const copyButtonEl = document.querySelector("#copy")
+        copyButtonEl.addEventListener('click', copy)
 
         generatePassword()
 
