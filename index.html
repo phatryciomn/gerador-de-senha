@@ -127,7 +127,14 @@
             }
 
         function calculateQuality() {
-            const percent = Math.round((passwordLength / 64) * 100)
+            // T*0.25 + M*0.15 + N*0.25 + S*0.35 = 100
+
+            const percent = Math.round(
+                (passwordLength / 64) * 60 +
+                (upperCaseCheckEl.checked ? 10 : 0) +
+                (numberCheckEl.checked ? 10 : 0) + 
+                (symbolCheckEl.checked ? 20 : 0)
+            )
 
             console.log(percent)
 
